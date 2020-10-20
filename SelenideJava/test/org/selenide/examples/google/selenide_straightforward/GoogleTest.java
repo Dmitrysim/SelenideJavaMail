@@ -16,12 +16,15 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleTest {
   WebDriver driver;
+
+  private static String mailUsername = System.getProperty("mail.username", "your mail");
+  private static String mailPassword = System.getProperty("mail.password", "your password");
 
   @Rule
   public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(true);
@@ -56,9 +59,19 @@ public class GoogleTest {
   @Test
   public void search_selenide_in_google() {
     open("https://mail.ru/?from=logout");
-    $(By.name("login")).val("dima_87771995").pressEnter();
-    $(By.name("password")).val("tricker-nero-boy-dima").pressEnter();
-    $$(By.className("portal-menu-element__text")).equals("Входящие");
+    login();
+    waitUntilPagesIsLoaded();
+    //$$(By.className("portal-menu-element__text")).equals("Входящие");
 
   }
+
+  protected static void waitUntilPagesIsLoaded() {
+    $(byText("Loading")).waitUntil(disappears, 80000);
+  }
+
+  private static void login() {
+    $(By.name("login")).val(mailUsername).pressEnter();
+    $(By.name("password")).val(mailPassword).pressEnter();
+  }
+
 }
