@@ -23,8 +23,8 @@ import static com.codeborne.selenide.Selenide.*;
 public class GoogleTest {
   WebDriver driver;
 
-  private static String mailUsername = System.getProperty("mail.username", "your mail");
-  private static String mailPassword = System.getProperty("mail.password", "your password");
+  private static String mailUsername = System.getProperty("mail.username", "dima_87771995");
+  private static String mailPassword = System.getProperty("mail.password", "tricker-nero-boy-dima");
 
   @Rule
   public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(true);
@@ -32,10 +32,7 @@ public class GoogleTest {
   @Before
   public void setUp() {
     String currentBrowser = System.getProperty("selenide.browser", "chrome");
-    if ("chrome".equals(currentBrowser)) {
-      WebDriverManager.chromedriver().setup();
-      driver = new ChromeDriver();
-    } else if ("firefox".equals(currentBrowser)) {
+     if ("firefox".equals(currentBrowser)) {
       WebDriverManager.firefoxdriver().setup();
       driver = new FirefoxDriver();
     } else if ("safari".equals(currentBrowser)) {
@@ -61,12 +58,13 @@ public class GoogleTest {
     open("https://mail.ru/?from=logout");
     login();
     waitUntilPagesIsLoaded();
+    $(By.xpath("//*[@id=\"ph_mail\"]/span")).shouldHave(text("Почта"));
     //$$(By.className("portal-menu-element__text")).equals("Входящие");
 
   }
 
   protected static void waitUntilPagesIsLoaded() {
-    $(byText("Loading")).waitUntil(disappears, 80000);
+    $(byText("Входящие")).waitUntil(disappears, 40000);
   }
 
   private static void login() {
