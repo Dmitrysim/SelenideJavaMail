@@ -1,21 +1,4 @@
-Selenide examples: Google search
-================================
-
-This is a sample project demonstrating how to test Google search UI with Selenide (Selenium webdriver).
-
-**You can checkout and run it locally with a few minutes.**
-
-### How to run with Gradle
-
-Type from command line for running tests in different browsers:
-
-```
-./gradlew chrome
-./gradlew firefox
-./gradlew ie
-./gradlew edge
-./gradlew safari
-```
+Selenide examples: Mail autorization
 
 ### How to run with Maven
 
@@ -29,19 +12,9 @@ mvn clean test -P edge
 mvn clean test -P safari
 ```
 
-_Feel free to share your feedback!_
+Allure report:
 
-### Video
-
-It's a short video demonstrating how it works:
-
-https://vimeo.com/107647158
-
-### Opa Page Object styles!
-
-The project contains tests in different styles:
- * without page object (selenide_straightforward)
- * with classic _Selenium_ page object
- * with _Selenide_-style page object
-
-[![Build Status](https://travis-ci.org/selenide-examples/google.png)](https://travis-ci.org/selenide-examples/google)
+```
+mvn allure:serve
+mvn allure:report
+```

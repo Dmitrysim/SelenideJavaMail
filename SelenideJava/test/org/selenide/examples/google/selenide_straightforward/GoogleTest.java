@@ -59,7 +59,6 @@ public class GoogleTest {
     login();
     waitUntilPagesIsLoaded();
     $(By.xpath("//*[@id=\"ph_mail\"]/span")).shouldHave(text("Почта"));
-    //$$(By.className("portal-menu-element__text")).equals("Входящие");
 
   }
 
