@@ -1,7 +1,9 @@
 package org.selenide.examples.google.selenide_straightforward;
 
 import com.codeborne.selenide.junit.TextReport;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -59,7 +61,6 @@ public class GoogleTest {
     login();
     waitUntilPagesIsLoaded();
     $(By.xpath("//*[@id=\"ph_mail\"]/span")).shouldHave(text("Почта"));
-
   }
 
   protected static void waitUntilPagesIsLoaded() {
